@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_movie"
+    android:paddingHorizontal="@dimen/dimen15dp"
+    android:layout_marginVertical="@dimen/dimen8dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/background_movie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen15dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/movie_poster"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/item_movie_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubunt_medium"
+            android:maxLines="1"
+            android:text="@string/example_movie_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="@dimen/dimen16dp"
+                android:layout_height="@dimen/dimen16dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen4dp"
+                android:src="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/item_movie_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen8dp"
+                android:fontFamily="@font/ubunt_medium"
+                android:text="8.9"
+                android:textColor="@color/color_accent"
+                android:textSize="@dimen/dimen14sp" />
+
+            <TextView
+                android:id="@+id/item_movie_votes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/dimen8dp"
+                android:layout_marginStart="@dimen/dimen4dp"
+                android:fontFamily="@font/ubunt_medium"
+                android:text="2789 votes"
+                android:textColor="@color/color_hint"
+                android:textSize="@dimen/dimen12sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_movie_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen15dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubunt_medium"
+            android:maxLines="3"
+            android:text="@string/example_overview"
+            android:textColor="@color/color_hint"
+            android:textSize="@dimen/dimen12sp" />
+
+    </LinearLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/movie_poster"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="12dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/poster_example"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="6dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

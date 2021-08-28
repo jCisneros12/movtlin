@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary"
+    tools:context=".presentation.search.SearchActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linear_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/button_back"
+            android:layout_width="@dimen/dimen30dp"
+            android:layout_height="@dimen/dimen30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen15dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_search_movie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:inputType="text"
+            android:textSize="@dimen/dimen16sp"
+            android:fontFamily="@font/ubunt_medium"
+            android:textColor="@color/white"
+            android:textColorHint="@color/color_hint"
+            android:hint="@string/search_movie_by_name"
+            android:paddingVertical="@dimen/dimen12dp"
+            android:paddingHorizontal="@dimen/dimen15dp"
+            android:layout_marginVertical="@dimen/dimen15dp"
+            android:layout_marginHorizontal="@dimen/dimen15dp"
+            android:background="@drawable/background_search"/>
+
+        <ImageView
+            android:id="@+id/button_search"
+            android:layout_width="@dimen/dimen30dp"
+            android:layout_height="@dimen/dimen30dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/dimen15dp"
+            android:src="@drawable/ic_search" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_favorites"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_search"
+        tools:listitem="@layout/item_movie" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
