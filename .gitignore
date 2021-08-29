@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+#api key
+/app/src/main/java/dev/jcisneros/movtlin/utils/APIKEY.kt
