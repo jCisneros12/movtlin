@@ -6,7 +6,7 @@ import dev.jcisneros.movtlin.data.model.MovieDetail
 import dev.jcisneros.movtlin.data.model.MovieItem
 import dev.jcisneros.movtlin.utils.Resource
 
-class RepositoryImpl(val networkDataSource: IDataSource): IRepository {
+class RepositoryImpl(private val networkDataSource: IDataSource): IRepository {
     override suspend fun getPopularMovies(): Resource<List<MovieItem>> {
         return networkDataSource.getPopularMovies()
     }

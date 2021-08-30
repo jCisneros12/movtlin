@@ -30,7 +30,6 @@
         android:textColor="@color/white"
         android:textSize="@dimen/dimen20sp"
         app:layout_constraintStart_toEndOf="@+id/button_back_genre"
-        app:layout_constraintTop_toTop="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

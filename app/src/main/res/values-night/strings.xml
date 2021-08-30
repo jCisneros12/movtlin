@@ -12,4 +12,5 @@
     <string name="txt_recommended_movies">Recommended movies</string>
     <string name="search_movie_by_name">Search movie by name...</string>
     <string name="popular_movies">Popular Movies</string>
+    <string name="server_error">Server error</string>
 </resources>

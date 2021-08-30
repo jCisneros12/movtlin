@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_movies"
         android:name="dev.jcisneros.movtlin.presentation.movies.MoviesFragment"
-        android:label="@string/title_home"
+        android:label="@string/bottom_movies"
         tools:layout="@layout/fragment_movies" />
 
     <fragment

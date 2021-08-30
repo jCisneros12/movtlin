@@ -91,10 +91,11 @@
         app:layout_constraintTop_toBottomOf="@+id/recycler_genres" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
         android:layout_marginStart="@dimen/dimen4dp"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_star"
         app:layout_constraintBottom_toBottomOf="@+id/text_view_popular"
         app:layout_constraintStart_toEndOf="@+id/text_view_popular"
@@ -102,6 +103,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_movies"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dimen15dp"
@@ -111,6 +113,19 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_popular"
         tools:listitem="@layout/item_movie" />
 
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/movie_loading_lottie"
+            android:visibility="gone"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/movie_load_lottie"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_popular"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

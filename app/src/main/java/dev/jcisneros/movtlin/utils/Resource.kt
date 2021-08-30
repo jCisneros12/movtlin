@@ -1,7 +1,7 @@
 package dev.jcisneros.movtlin.utils
 
 sealed class Resource<out T> {
-    object Loading: Resource<Nothing>()
+    class Loading<out T> : Resource<T>()
     data class Success<out T>(val data: T) : Resource<T>()
-    data class Failure(val exception: Exception) : Resource<Nothing>()
+    data class Failure<out T>(val exception: Exception) : Resource<T>()
 }
