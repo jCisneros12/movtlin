@@ -8,6 +8,19 @@
     android:background="@color/color_primary"
     tools:context=".presentation.genres.GenreMovieActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/movie_loading_lottie"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/movie_load_lottie" />
+
     <ImageView
         android:id="@+id/button_back_genre"
         android:layout_width="wrap_content"
@@ -25,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen15dp"
         android:fontFamily="@font/ubunt_medium"
-        android:text="Genre Name movies"
         android:layout_marginTop="@dimen/dimen25dp"
         android:textColor="@color/white"
         android:textSize="@dimen/dimen20sp"

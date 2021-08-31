@@ -2,6 +2,7 @@ package dev.jcisneros.movtlin.presentation.details
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -38,7 +39,6 @@ class MovieDetailsActivity : AppCompatActivity(), RecomMoviesAdapter.OnItemClick
     //movie id
     private lateinit var movieId: String
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMovieDetailsBinding.inflate(layoutInflater)
@@ -61,9 +61,11 @@ class MovieDetailsActivity : AppCompatActivity(), RecomMoviesAdapter.OnItemClick
         viewModel.movieDetails(movieId).observe(this, { movie ->
             when (movie) {
                 is Resource.Loading -> {
-                    //TODO: show any ui for loading "state"
+                    binding.movieDetailContainer.visibility = View.GONE
+                    binding.movieLoadingLottie.visibility = View.VISIBLE
                 }
                 is Resource.Success -> {
+                    binding.movieLoadingLottie.visibility = View.GONE
                     Glide.with(this).load(Const.BASE_URL_IMAGE + movie.data.backdropPath)
                         .into(binding.movieDetailBackdropImage)
                     Glide.with(this).load(Const.BASE_URL_IMAGE + movie.data.posterPath)
@@ -88,10 +90,8 @@ class MovieDetailsActivity : AppCompatActivity(), RecomMoviesAdapter.OnItemClick
     private fun setupObserveMoviesByGenre(movieId: String) {
         viewModel.recommendedMovies(movieId).observe(this, { movie ->
             when (movie) {
-                is Resource.Loading -> {
-                    //TODO: show any ui for loading "state"
-                }
                 is Resource.Success -> {
+                    binding.movieDetailContainer.visibility = View.VISIBLE
                     adapterMovies.setListData(movie.data)
                     adapterMovies.notifyDataSetChanged()
                 }

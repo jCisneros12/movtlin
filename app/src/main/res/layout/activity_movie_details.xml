@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +8,29 @@
     android:background="@color/color_primary"
     tools:context=".presentation.details.MovieDetailsActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/movie_loading_lottie"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/movie_load_lottie" />
+
     <ScrollView
+        android:id="@+id/movie_detail_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen160dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/movie_background_example"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +81,6 @@
                     android:fontFamily="@font/ubuntu_bold"
                     android:paddingHorizontal="@dimen/dimen6dp"
                     android:paddingVertical="@dimen/dimen4dp"
-                    android:text="Action"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen12sp" />
 
@@ -78,7 +94,6 @@
                     android:fontFamily="@font/ubuntu_bold"
                     android:paddingHorizontal="@dimen/dimen6dp"
                     android:paddingVertical="@dimen/dimen4dp"
-                    android:text="Science fiction"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen12sp" />
 
@@ -128,7 +143,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/ubuntu_bold"
-                            android:text="8.9"
+
                             android:textColor="@color/color_accent"
                             android:textSize="@dimen/dimen16sp" />
                     </LinearLayout>
@@ -156,7 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen10dp"
                         android:fontFamily="@font/ubuntu_bold"
-                        android:text="2021-08-12"
+
                         android:textColor="@color/color_hint"
                         android:textSize="@dimen/dimen16sp" />
                 </LinearLayout>
@@ -182,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen10dp"
                         android:fontFamily="@font/ubuntu_bold"
-                        android:text="EN"
+
                         android:textColor="@color/color_hint"
                         android:textSize="@dimen/dimen16sp" />
                 </LinearLayout>
@@ -214,7 +229,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen20dp"
                     android:fontFamily="@font/ubuntu_bold"
-                    android:text="@string/example_overview"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen14sp" />
 
@@ -227,7 +241,7 @@
                 android:layout_marginStart="@dimen/dimen25dp"
                 android:layout_marginTop="@dimen/dimen15dp"
                 android:fontFamily="@font/ubuntu_bold"
-                android:text="Iron Man 3"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -241,6 +255,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
 
             <ImageView
                 android:id="@+id/movie_detail_arrow_back"
@@ -260,7 +276,6 @@
                 android:layout_height="180dp"
                 android:scaleType="centerCrop"
                 android:layout_marginStart="@dimen/dimen25dp"
-                android:src="@drawable/poster_example"
                 app:layout_constraintBottom_toBottomOf="@+id/movie_detail_backdrop_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movie_detail_backdrop_image"

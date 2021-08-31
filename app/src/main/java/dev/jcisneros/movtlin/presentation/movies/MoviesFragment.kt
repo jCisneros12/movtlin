@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.jcisneros.movtlin.R
 import dev.jcisneros.movtlin.data.datasource.network.NetworkDataSourceImpl
+import dev.jcisneros.movtlin.data.model.GenreModel
 import dev.jcisneros.movtlin.data.model.MovieItem
 import dev.jcisneros.movtlin.databinding.FragmentMoviesBinding
 import dev.jcisneros.movtlin.domain.repository.RepositoryImpl
@@ -20,7 +21,8 @@ import dev.jcisneros.movtlin.presentation.details.MovieDetailsActivity
 import dev.jcisneros.movtlin.utils.Resource
 import dev.jcisneros.movtlin.utils.toast
 
-class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener {
+class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener,
+    GenresAdapter.OnItemClickListener {
 
     //viewBinding
     private var _binding: FragmentMoviesBinding? = null
@@ -40,7 +42,7 @@ class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener {
 
     //Recycler adapter for Genres
     private val adapterGenres: GenresAdapter by lazy {
-        GenresAdapter(requireContext())
+        GenresAdapter(requireContext(), this)
     }
 
     override fun onCreateView(
@@ -112,6 +114,12 @@ class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener {
     //onClick methods to recycler movies
     override fun onClickItem(movie: MovieItem) {
         OnClickAdapter.onClickMovieItem(movie.movieId.toString(), requireContext())
+    }
+
+
+    //onClick method for genre item
+    override fun onClickItem(genre: GenreModel) {
+        OnClickAdapter.onClickGenreItem(genre.id.toString(), genre.name.toString(), requireContext())
     }
 
     override fun onDestroyView() {
