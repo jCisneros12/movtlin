@@ -6,6 +6,7 @@ import dev.jcisneros.movtlin.data.model.MovieList
 import dev.jcisneros.movtlin.utils.Const.API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WebService {
 
@@ -27,7 +28,7 @@ interface WebService {
 
     //get movies by genre id
     @GET("discover/movie?api_key=${API_KEY}&with_genres={genreId}")
-    suspend fun getMoviesByGenre(@Path("genreId", encoded = true) genreId: String): MovieList
+    suspend fun getMoviesByGenre(@Query("genreId") genreId: String): MovieList
 
     //get recommended movies by movie id
     @GET("movie/{movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=1")
