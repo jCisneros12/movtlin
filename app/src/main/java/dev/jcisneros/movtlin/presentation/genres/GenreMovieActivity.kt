@@ -1,9 +1,9 @@
 package dev.jcisneros.movtlin.presentation.genres
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.jcisneros.movtlin.R
 import dev.jcisneros.movtlin.data.datasource.network.NetworkDataSourceImpl
@@ -19,22 +19,22 @@ import dev.jcisneros.movtlin.utils.toast
 
 class GenreMovieActivity : AppCompatActivity(), MoviesAdapter.OnItemClickListener {
 
-    //viewBinding
+    // viewBinding
     private lateinit var binding: ActivityGenreMovieBinding
 
-    //viewModel
+    // viewModel
     private val viewModel by viewModels<GenreMovieViewModel> {
         GenreMovieViewModelFactory(
             RepositoryImpl(NetworkDataSourceImpl())
         )
     }
 
-    //recycler adapter
+    // recycler adapter
     private val adapter: MoviesAdapter by lazy {
         MoviesAdapter(this, this)
     }
 
-    //genre id
+    // genre id
     private lateinit var genreId: String
     private lateinit var genreName: String
 
@@ -43,21 +43,20 @@ class GenreMovieActivity : AppCompatActivity(), MoviesAdapter.OnItemClickListene
         binding = ActivityGenreMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //extract the genre id from intent
+        // extract the genre id from intent
         genreId = intent.getStringExtra(GENRE_ID).toString()
         genreName = intent.getStringExtra(GENRE_NAME).toString()
 
-        //set adapter to recycler
+        // set adapter to recycler
         setRecyclerAdapter()
 
-        //observe movies by genre
+        // observe movies by genre
         setupObserveMoviesByGenre(genreId)
-
     }
 
-    private fun setupObserveMoviesByGenre(genreId: String){
+    private fun setupObserveMoviesByGenre(genreId: String) {
         viewModel.getMoviesByGenre(genreId).observe(this, { movie ->
-            when(movie){
+            when (movie) {
                 is Resource.Loading -> {
                     binding.movieLoadingLottie.visibility = View.VISIBLE
                 }
@@ -74,7 +73,7 @@ class GenreMovieActivity : AppCompatActivity(), MoviesAdapter.OnItemClickListene
         })
     }
 
-    private fun setRecyclerAdapter(){
+    private fun setRecyclerAdapter() {
         binding.recyclerMoviesByGenre.layoutManager = LinearLayoutManager(this)
         binding.recyclerMoviesByGenre.adapter = adapter
     }

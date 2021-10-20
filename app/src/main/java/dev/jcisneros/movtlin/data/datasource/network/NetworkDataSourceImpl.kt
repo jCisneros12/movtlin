@@ -6,14 +6,14 @@ import dev.jcisneros.movtlin.data.model.MovieItem
 import dev.jcisneros.movtlin.utils.Resource
 import dev.jcisneros.movtlin.utils.RetrofitClient
 
-class NetworkDataSourceImpl: IDataSource {
+class NetworkDataSourceImpl : IDataSource {
 
-    //get popular movies
+    // get popular movies
     override suspend fun getPopularMovies(): Resource<List<MovieItem>> {
         return Resource.Success(RetrofitClient.webservice.getPopularMovies().movieList!!)
     }
 
-    //get movie By id
+    // get movie By id
     override suspend fun getMovieById(movieId: String): Resource<MovieDetail> {
         return Resource.Success(RetrofitClient.webservice.getMovieById(movieId))
     }

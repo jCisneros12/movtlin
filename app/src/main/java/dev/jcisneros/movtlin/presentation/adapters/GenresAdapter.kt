@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.jcisneros.movtlin.data.model.GenreModel
-import dev.jcisneros.movtlin.data.model.MovieItem
 import dev.jcisneros.movtlin.databinding.ItemGenreBinding
 
 class GenresAdapter(
@@ -15,13 +14,12 @@ class GenresAdapter(
 ) :
     RecyclerView.Adapter<GenresAdapter.GenresViewHolder>() {
 
-    //genre list
+    // genre list
     private var genreList: List<GenreModel> = arrayListOf()
 
     fun setListData(data: List<GenreModel>) {
         genreList = data
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GenresViewHolder {
         val itemBinding = ItemGenreBinding.inflate(
@@ -40,10 +38,10 @@ class GenresAdapter(
         else 0
     }
 
-    //interface for implements onClick methods
+    // interface for implements onClick methods
     interface OnItemClickListener {
         fun onClickItem(genre: GenreModel)
-        //add more methods here...
+        // add more methods here...
     }
 
     inner class GenresViewHolder(private val binding: ItemGenreBinding) :
@@ -54,6 +52,4 @@ class GenresAdapter(
             binding.itemTxtGenre.text = genre.name.toString()
         }
     }
-
-
 }

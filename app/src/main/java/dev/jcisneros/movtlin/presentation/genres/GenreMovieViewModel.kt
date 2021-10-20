@@ -15,7 +15,7 @@ class GenreMovieViewModel(private val repository: IRepository): ViewModel() {
         emit(Resource.Loading())
         try {
             emit(repository.getMoviesByGenre(genreId))
-        }catch (e: Exception){
+        }catch (e: Exception) {
             emit(Resource.Failure(e))
             Log.e("MOVIES-GENRE-ERR", e.toString())
         }

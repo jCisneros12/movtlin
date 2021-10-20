@@ -21,7 +21,7 @@ class MoviesViewModel(private val repository: IRepository) : ViewModel() {
         }
     }
 
-    //get all genres
+    // get all genres
     val genreList = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {

@@ -1,6 +1,6 @@
 package dev.jcisneros.movtlin.presentation.movies
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,30 +17,31 @@ import dev.jcisneros.movtlin.domain.repository.RepositoryImpl
 import dev.jcisneros.movtlin.presentation.adapters.GenresAdapter
 import dev.jcisneros.movtlin.presentation.adapters.MoviesAdapter
 import dev.jcisneros.movtlin.presentation.adapters.OnClickAdapter
-import dev.jcisneros.movtlin.presentation.details.MovieDetailsActivity
 import dev.jcisneros.movtlin.utils.Resource
 import dev.jcisneros.movtlin.utils.toast
 
-class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener,
+class MoviesFragment :
+    Fragment(),
+    MoviesAdapter.OnItemClickListener,
     GenresAdapter.OnItemClickListener {
 
-    //viewBinding
+    // viewBinding
     private var _binding: FragmentMoviesBinding? = null
     private val binding get() = _binding!!
 
-    //ViewModel
+    // ViewModel
     private val viewModel by viewModels<MoviesViewModel> {
         MoviesViewModelFactory(
             RepositoryImpl(NetworkDataSourceImpl())
         )
     }
 
-    //Recycler adapter for Movies
+    // Recycler adapter for Movies
     private val adapterMovies: MoviesAdapter by lazy {
         MoviesAdapter(requireContext(), this)
     }
 
-    //Recycler adapter for Genres
+    // Recycler adapter for Genres
     private val adapterGenres: GenresAdapter by lazy {
         GenresAdapter(requireContext(), this)
     }
@@ -57,15 +58,15 @@ class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //recycler adapter
+        // recycler adapter
         setRecyclerAdapters()
-        //set movie data to recycler
+        // set movie data to recycler
         setupObservePopularMovies()
-        //set genre data to recycler
+        // set genre data to recycler
         setupObserveGenres()
-
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setupObservePopularMovies() {
         viewModel.popularMovies.observe(viewLifecycleOwner, { movie ->
             when (movie) {
@@ -88,7 +89,7 @@ class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener,
         viewModel.genreList.observe(viewLifecycleOwner, { genre ->
             when (genre) {
                 is Resource.Loading -> {
-                    //TODO: show ui
+                    // TODO: show ui
                 }
                 is Resource.Success -> {
                     adapterGenres.setListData(genre.data)
@@ -102,22 +103,21 @@ class MoviesFragment : Fragment(), MoviesAdapter.OnItemClickListener,
     }
 
     private fun setRecyclerAdapters() {
-        //movies adapter
+        // movies adapter
         binding.recyclerMovies.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerMovies.adapter = adapterMovies
-        //genres adapter
+        // genres adapter
         binding.recyclerGenres.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerGenres.adapter = adapterGenres
     }
 
-    //onClick methods to recycler movies
+    // onClick methods to recycler movies
     override fun onClickItem(movie: MovieItem) {
         OnClickAdapter.onClickMovieItem(movie.movieId.toString(), requireContext())
     }
 
-
-    //onClick method for genre item
+    // onClick method for genre item
     override fun onClickItem(genre: GenreModel) {
         OnClickAdapter.onClickGenreItem(genre.id.toString(), genre.name.toString(), requireContext())
     }
